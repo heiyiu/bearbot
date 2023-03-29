@@ -5,7 +5,7 @@ RUN --mount=type=secret,id=discord_bot_token
 # Install required dependencies
 RUN apt update && \
     apt upgrade -y && \
-    apt install --no-install-recommends libffi-dev libnacl-dev python3-dev
+    apt install -y --no-install-recommends libffi-dev libnacl-dev python3-dev
 
 # Install python req
 RUN mkdir /app
