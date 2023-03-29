@@ -10,6 +10,6 @@ RUN apt update && \
 # Install python req
 RUN mkdir /app
 ADD requirements.txt discord_app.py /app/
-RUN python3 -m pip install -r /tmp/requirements.txt
+RUN python3 -m pip install -r /app/requirements.txt
 
 CMD ["python3", "/app/discord_app.py", "/run/secrets/discord_bot_token"]
