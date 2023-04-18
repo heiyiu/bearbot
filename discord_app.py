@@ -1,10 +1,6 @@
 import discord
 from discord.ext import commands
-import argparse
-
-parser = argparse.ArgumentParser()
-parser.add_argument('token_file_path')
-args = parser.parse_args()
+import os
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -18,4 +14,8 @@ async def ping(ctx):
 async def joke(ctx):
     await ctx.send('What do you call a bear with no teeth? A gummy bear!')
 
-bot.run(open(args.token_file_path, 'r').read())
+@bot.command()
+async def preston(ctx):
+    await ctx.send("The man, the myth, the legend himself")
+
+bot.run(os.getenv('DISCORD_BOT_TOKEN'))
