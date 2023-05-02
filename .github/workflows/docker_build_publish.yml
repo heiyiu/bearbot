@@ -36,12 +36,11 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       # Build image locally, don't push
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v4
         with:
           context: .
           tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
           push: false
           load: true
           secrets: |
@@ -62,6 +61,7 @@ jobs:
           context: .
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          platforms: linux/amd64
           push: true
           secrets: |
             "discord_bot_token=${{ secrets.DISCORD_BOT_TOKEN }}"
