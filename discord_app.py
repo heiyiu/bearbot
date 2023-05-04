@@ -14,7 +14,7 @@ async def ping(ctx):
 
 @bot.command()
 async def joke(ctx):
-    r = requests.get("https://v2.jokeapi.dev/joke/Any")
+    r = requests.get("https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,political,racist,sexist")
     await ctx.send(r.json()['setup'])
     await asyncio.sleep(5)
     await ctx.send(r.json()['delivery'])
