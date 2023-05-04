@@ -1,6 +1,8 @@
 import discord
 from discord.ext import commands
 import os
+import requests
+import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -12,7 +14,10 @@ async def ping(ctx):
 
 @bot.command()
 async def joke(ctx):
-    await ctx.send('What do you call a bear with no teeth? A gummy bear!')
+    r = requests.get("https://v2.jokeapi.dev/joke/Any")
+    await ctx.send(r.json()['setup'])
+    await asyncio.sleep(5)
+    await ctx.send(r.json()['delivery'])
 
 @bot.command()
 async def preston(ctx):
